@@ -4,11 +4,14 @@ export class Font {
   readonly charHeight: number;
   readonly scale: number;
 
-  constructor(url: string, charWidth: number, charHeight: number, scale?: number) {
+  constructor(
+    url: string, charWidth: number, charHeight: number,
+    scale?: number, graphical: boolean = false) {
     this.url = url;
     this.charWidth = charWidth;
     this.charHeight = charHeight;
     this.scale = scale || 1.0;
+    this.graphical = graphical;
   }
 }
 

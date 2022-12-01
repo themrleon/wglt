@@ -166,6 +166,11 @@ export class Terminal extends Console {
     gl.linkProgram(program);
     gl.useProgram(program);
 
+    if (this.font.graphical) {
+      // Set the flag to ignore foreground/background colors, and use texture directly
+      gl.uniform1i(gl.getUniformLocation(program, 'h'), 1);
+    }
+
     this.crtProgram = gl.createProgram() as WebGLProgram;
     gl.attachShader(this.crtProgram, this.buildShader(gl.VERTEX_SHADER, CRT_VERTEX_SHADER_SOURCE));
     gl.attachShader(this.crtProgram, this.buildShader(gl.FRAGMENT_SHADER, CRT_FRAGMENT_SHADER_SOURCE));
