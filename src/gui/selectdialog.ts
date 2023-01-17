@@ -11,7 +11,7 @@ export class SelectDialog extends Dialog {
   readonly callback: (i: number) => void;
   protected hoverIndex: number;
 
-  constructor(title: string, options: string[], callback: (i: number) => void) {
+  constructor(title: string, titleColor: number | undefined, options: string[], callback: (i: number) => void) {
     let width = title.length;
     for (let i = 0; i < options.length; i++) {
       width = Math.max(width, options[i].length);
@@ -19,7 +19,7 @@ export class SelectDialog extends Dialog {
 
     const height = options.length;
     const rect = new Rect(0, 0, width, height);
-    super(rect, title);
+    super(rect, title, titleColor);
     this.options = options;
     this.callback = callback;
     this.hoverIndex = -1;

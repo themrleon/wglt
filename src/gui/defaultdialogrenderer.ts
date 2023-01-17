@@ -19,7 +19,7 @@ export class DefaultDialogRenderer {
     const { x, y, width, height } = dialogState.rect;
     term.fillRect(x, y, width, height, 0, Colors.WHITE, Colors.BLACK);
     term.drawSingleBox(x, y, width, height);
-    term.drawCenteredString((x + width / 2) | 0, y, ' ' + dialog.title + ' ');
+    term.drawCenteredString((x + width / 2) | 0, y, ' ' + dialog.title + ' ', dialog.titleColor || Colors.WHITE);
     dialog.drawContents(term, dialogState.contentsOffset);
   }
 }

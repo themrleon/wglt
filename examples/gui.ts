@@ -25,12 +25,13 @@ term.update = function () {
       y++;
     }
     if (term.isKeyPressed(Key.VK_H)) {
-      gui.add(new MessageDialog('ALERT', 'Hello World'));
+      gui.add(new MessageDialog('ALERT',Colors.DARK_CYAN, 'Hello World'));
     }
     if (term.isKeyPressed(Key.VK_F)) {
       gui.add(
         new MessageDialog(
           'Formatted Text',
+          undefined,
           new Message('Dagger of the Rising Moon', Colors.DARK_MAGENTA, undefined, [
             new Message('Item Level 200', Colors.YELLOW),
             new Message('Binds when picked up', Colors.WHITE),
@@ -67,14 +68,15 @@ term.update = function () {
         new ScrollableMessageDialog(
           new Rect(4, 4, 72, 37),
           'Message Log',
+          Colors.DARK_RED,
           new Message(undefined, undefined, undefined, messages)
         )
       );
     }
     if (term.isKeyPressed(Key.VK_I)) {
       gui.add(
-        new SelectDialog('INVENTORY', options, (choice) => {
-          gui.add(new MessageDialog('ALERT', 'You chose: ' + options[choice]));
+        new SelectDialog('INVENTORY',Colors.BROWN, options, (choice) => {
+          gui.add(new MessageDialog('ALERT',Colors.DARK_RED, 'You chose: ' + options[choice]));
         })
       );
     }

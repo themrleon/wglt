@@ -7,14 +7,14 @@ import { Dialog } from './dialog';
 import { Message } from './message';
 
 export class MessageDialog extends Dialog {
-  constructor(title: string, readonly message: string | Message) {
+  constructor(title: string, titleColor: number | undefined, readonly message: string | Message) {
     let rect;
     if (message instanceof Message) {
       rect = new Rect(0, 0, message.getWidth(), message.getHeight());
     } else {
       rect = new Rect(0, 0, message.length, 1);
     }
-    super(rect, title);
+    super(rect, title, titleColor);
   }
 
   drawContents(console: Console, offset: Point): void {
