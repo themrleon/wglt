@@ -1,4 +1,5 @@
 import { Colors, fromRgb, GUI, Key, Message, MessageAlign, MessageDialog, Rect, SelectDialog, Terminal } from '../src/';
+import { Scrollable2DMessageDialog } from '../src/gui/scrollable2dmessagedialog';
 import { ScrollableMessageDialog } from '../src/gui/scrollablemessagedialog';
 
 const term = new Terminal(document.querySelector('canvas') as HTMLCanvasElement, 80, 45);
@@ -80,6 +81,24 @@ term.update = function () {
         })
       );
     }
+    if (term.isKeyPressed(Key.VK_K)) {
+      gui.add(
+        new Scrollable2DMessageDialog(
+          new Rect(0, 0, 13, 5),
+          'Message Box',
+          Colors.DARK_CYAN,
+          new Message(undefined, undefined, undefined, [
+            new Message('Press right arrow key to see how long this sentence can be!'),
+            new Message('Press home/end key to move horizontally faster'),
+            new Message('Press page up/page down to move vertically faster'),
+            new Message('I am a sentence that have color', Colors.DARK_GRAY),
+            new Message('notice how the title also have a color'),
+            new Message('I am another long line that will not in the box'),
+            new Message('I am also another colored message!!!', Colors.LIGHT_RED),
+          ])
+        )
+      );
+    }
   }
 
   term.clear();
@@ -90,6 +109,7 @@ term.update = function () {
   term.drawString(1, 7, 'Press "f" to open a MessageDialog with formatted text');
   term.drawString(1, 9, 'Press "s" to open a ScrollableMessageDialog');
   term.drawString(1, 11, 'Press "i" to open a SelectDialog');
+  term.drawString(1, 13, 'Press "k" to open a Scrollable2DMessageDialog');
   term.drawString(x, y, '@');
   gui.draw();
 };
