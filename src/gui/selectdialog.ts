@@ -14,7 +14,7 @@ export class SelectDialog extends Dialog {
   constructor(title: string, options: string[], callback: (i: number) => void) {
     let width = title.length;
     for (let i = 0; i < options.length; i++) {
-      width = Math.max(width, options[i].length + 4);
+      width = Math.max(width, options[i].length);
     }
 
     const height = options.length;
