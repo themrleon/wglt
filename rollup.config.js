@@ -45,7 +45,7 @@ export default {
         mkdirSync('./dist/cjs', { recursive: true });
         mkdirSync('./dist/esm', { recursive: true });
         writeFileSync('./dist/cjs/package.json', '{"type": "commonjs"}');
-        writeFileSync('./dist/esm/package.json', '{"type": "module"}');
+        writeFileSync('./dist/esm/package.json', '{"type": "module", "name":"wglt","version":"0.0.1"}');
       },
     },
   ],
