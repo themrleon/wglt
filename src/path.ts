@@ -15,7 +15,7 @@ let pathId = 0;
  * @param maxDist Maximum distance to examine.
  * @return Array of steps if destination found; undefined otherwise.
  */
-export function computePath(map: Console, source: PointLike, dest: PointLike, maxDist: number): Cell[] | undefined {
+export function computePath(map: Console, source: PointLike, dest: PointLike, maxDist: number, ignoreExplored: boolean = false): Cell[] | undefined {
   pathId++;
 
   const sourceCell = map.grid[source.y][source.x];
@@ -38,7 +38,7 @@ export function computePath(map: Console, source: PointLike, dest: PointLike, ma
       const y = u.y + dys[i];
       if (x >= 0 && x < map.width && y >= 0 && y < map.height) {
         const v = map.grid[y][x];
-        if (v.blocked && v.explored && (x !== dest.x || y !== dest.y)) {
+        if (v.blocked && (v.explored || ignoreExplored) && (x !== dest.x || y !== dest.y)) {
           continue;
         }
         if (v.pathId !== pathId) {
