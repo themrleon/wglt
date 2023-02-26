@@ -3,7 +3,7 @@
   "version": "0.5.1",
   "description": "WebGL Terminal",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "npm run build:site && npm run build:lib && npm run build:types",
     "build:site": "vite build",
     "build:lib": "rollup --config rollup.config.js",
