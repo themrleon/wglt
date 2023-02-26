@@ -34,11 +34,14 @@ export class Mouse {
     el.addEventListener('mouseup', (e) => this.handleEvent(e));
     el.addEventListener('mousemove', (e) => this.handleEvent(e));
     el.addEventListener('contextmenu', (e) => this.handleEvent(e));
-    el.addEventListener('touchstart', (e) => this.handleTouchEvent(e));
-    el.addEventListener('touchend', (e) => this.handleTouchEvent(e));
-    el.addEventListener('touchcancel', (e) => this.handleTouchEvent(e));
-    el.addEventListener('touchmove', (e) => this.handleTouchEvent(e));
     el.addEventListener('wheel', (e) => this.handleWheelEvent(e));
+
+    if (!terminal.touchDisabled) {
+      el.addEventListener('touchstart', (e) => this.handleTouchEvent(e));
+      el.addEventListener('touchend', (e) => this.handleTouchEvent(e));
+      el.addEventListener('touchcancel', (e) => this.handleTouchEvent(e));
+      el.addEventListener('touchmove', (e) => this.handleTouchEvent(e));
+    }
   }
 
   private handleTouchEvent(e: TouchEvent): void {

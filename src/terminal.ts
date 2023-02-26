@@ -26,6 +26,7 @@ interface TerminalOptions {
   font?: Font;
   crt?: CrtOptions;
   maxFps?: number;
+  touchDisabled?: boolean; // Disable touch events (used if you are handling by yourself or with some 3rd party library)
 }
 
 interface CrtOptions {
@@ -80,6 +81,7 @@ export class Terminal extends Console {
   readonly font: Font;
   readonly crt?: CrtOptions;
   readonly maxFps?: number;
+  readonly touchDisabled?: boolean;
   readonly pixelWidth: number;
   readonly pixelHeight: number;
   readonly pixelScale: number;
@@ -132,6 +134,7 @@ export class Terminal extends Console {
     this.font = options.font || DEFAULT_FONT;
     this.crt = options.crt;
     this.maxFps = options.maxFps;
+    this.touchDisabled = options.touchDisabled;
     this.pixelWidth = width * this.font.charWidth;
     this.pixelHeight = height * this.font.charHeight;
     this.pixelScale = options.crt?.scale || 1.0;
